@@ -262,3 +262,71 @@ window.onscroll = function(){
     };
 }; 
  */
+<<<<<<< HEAD
+=======
+/* start background */
+/* function OptionsBackGround(){
+let BackgroundOptions  = true;
+let BackLocalstorge = localStorage.getItem("Option-BackgroundImage");
+if(BackLocalstorge !== null){
+    console.log("Not Empty For BackGround");
+    if(BackLocalstorge === "true"){
+        BackgroundOptions = true;
+    }else{
+        BackgroundOptions = false;
+    }
+    document.querySelectorAll(".option-yesnoback span").forEach(element => {
+        element.classList.remove("active");
+    });
+    if(BackLocalstorge === "true" ){
+        document.querySelector(".option-yesnoback .yes").classList.add("active");
+    }else{
+        document.querySelector(".option-yesnoback .no").classList.add("active");
+    }
+}
+if(BackLocalstorge !== null ){
+    PlayBackGround();
+}
+let SetIntervalBack;
+let landingPage = document.querySelector(".landing");
+let ImageArray = ["team_work.jpg","R.jpg","R (1).jpg","istockphoto-180986465-170667a.jpg","desk-mac-apple-keyboard-desktop-lamp-work-space-brand-design-books-multimedia-screenshot-computers-desktop-computer-personal-computer-computer-monitor-personal-computer-hardware-display-device-royalty-free-imag.jpg"];
+
+function PlayBackGround(){
+
+    if(BackgroundOptions === true){
+        SetIntervalBack = setInterval(() => {
+            let MathRandome = Math.floor(Math.random() * ImageArray.length);
+            landingPage.style.backgroundImage = "url('image/"+ ImageArray[MathRandome] +"')"
+        },1000);
+    }
+}
+
+    if(BackLocalstorge !== null){
+        PlayBackGround();
+    }
+const YesNoBack = document.querySelectorAll(".option-yesnoback span");
+YesNoBack.forEach(Span => {
+    Span.addEventListener("click" , (e) => {
+        e.target.parentElement.querySelectorAll(".active").forEach(DisActive => {
+            DisActive.classList.remove("active");
+        });
+        e.target.classList.add("active");
+        if(e.target.dataset.backgroundoptionrand === "yes"){
+            console.log("Yes");
+            BackgroundOptions = true;
+            PlayBackGround();
+            localStorage.setItem("Option-BackgroundImage" , true);
+        }else {
+            console.log("No");
+            BackgroundOptions = false;
+            clearInterval(SetIntervalBack);
+            localStorage.setItem("Option-BackgroundImage" , false);
+        }
+    });
+});
+
+}
+OptionsBackGround();
+ *//* end background */
+
+>>>>>>> 6da45216c8bba9985b8b8b4fefaad60abc34cfa1

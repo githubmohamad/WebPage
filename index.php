@@ -139,7 +139,7 @@
     <!-- End landing page -->
 
     <!-- Start About -->
-    <div class="about">
+   <div class="about">
         <div class="container-css">
             <div class="info-about">
                 <div class="info-box-about">

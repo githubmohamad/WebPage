@@ -262,6 +262,8 @@ window.onscroll = function(){
     };
 }; 
  */
+<<<<<<< HEAD
+=======
 /* start background */
 /* function OptionsBackGround(){
 let BackgroundOptions  = true;
@@ -327,3 +329,4 @@ YesNoBack.forEach(Span => {
 OptionsBackGround();
  *//* end background */
 
+>>>>>>> 6da45216c8bba9985b8b8b4fefaad60abc34cfa1

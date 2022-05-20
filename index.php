@@ -420,25 +420,113 @@
     <!-- end testemonials -->
 
     <!-- start contact us -->
+    <?php 
+    if (isset($_POST["senmassgbut"])){
+        $username = $_POST["username"];
+        $userphone = $_POST["phone"];
+        $useremail = $_POST["email"];
+        $usersubject = $_POST["subject"];
+        $usertextarea = $_POST["Massage"];
+        $formerror = array();
+        if(empty($username)){
+            $formerror[] = "User Cant Be Empty";
+        }
+    }else {
+        echo "#24";
+    }
+    ?>
+    <style>
+
+        .sendmsgsuccess{
+            width: 100%;
+            color: greenyellow;
+            text-align: center;
+            display: block;
+            padding:10px;
+        }
+        .textError{
+        background-color: #fc3232;
+        width: 50%;
+        margin: 10px auto;
+        color: white;
+        text-align: center;
+        padding: 7px;
+        font-size: 14px;
+        border-radius: 5px;
+    }
+        .sendmsgeroor {
+            color:red;
+            font-size: 20px;
+            text-align: center;
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
     <div class="contact">
         <div class="ovar-lay"></div>
         <div class="container-css">
             <h2>Cntact Us</h2>
 
             <div class="contactus-content">
-                
+            <?php 
+                if (isset($_POST["senmassgbut"])){
+                    $username = $_POST["username"];
+                    $userphone = $_POST["phone"];
+                    $useremail = $_POST["email"];
+                    $usersubject = $_POST["subject"];
+                    $usertextarea = $_POST["Massage"];
+                    $formerror = array();
+                    if(empty($username)){
+                        $formerror[] = "User Cant Be Empty";
+                    }
+                    /* if(empty($userphone)){
+                        $formerror[] = "User Cant Be Empty";
+                    } */
+                    if(empty($useremail)){
+                        $formerror[] = "Email Cant Be Empty";
+                    }
+                    if(empty($usersubject)){
+                        $formerror[] = "Pleas Write Your Subject";
+                    }
+                    if(empty($usertextarea)){
+                        $formerror[] = "Pleas Write Your Massige";
+                    }
+                    if(empty($formerror)){
+                        require "mail.php";
+                        $mail->addAddress(''.$useremail.'', ''.$username.'');     //Add a recipient
+                        $mail->Subject = ''.$usersubject.'';
+                        $mail->Body    = ''.$usertextarea.'';
+                        if($mail->send()){
+                            echo "<h1 class='sendmsgsuccess'>Send Msg Successfully</h1>";
+                        }else {
+                            $mail->isError();
+                            echo "<h4 class='sendmsgeroor'>There Is Error Please Try Agine</h4>";
+                        }
+                    }else {
+                        foreach ($formerror as $ErrorMsg) {
+                            echo '
+                            <div class="formError">
+                                <h4 class="textError">'.$ErrorMsg.'</h4>
+                            </div>
+                            ';
+                        }
+                    }
+                }
+
+            ?>
+
                 <form method="post" action="" class="form-contact" >
                     
                     <div class="left">
-                        <input type="text" name="username"  placeholder="Your Name" id="">
-                        <input type="text" name="phone"  placeholder="Your Phone" id="">
-                        <input type="email" name="email"  placeholder="Your E-mail" id="">
-                        <input type="text" name="Subject"  placeholder="Your Subject" id="">
+                        <input type="text" name="username"   placeholder="Your Name" id="UserName">
+                        <input type="text" name="phone"   placeholder="Your Phone" id="NumberPhone">
+                        <input type="email" name="email"  placeholder="Your E-mail" id="EmailUser">
+                        <input type="text" name="subject"  placeholder="Your Subject" id="SubjectUasr">
                     </div>
 
                     <div class="right">
-                        <textarea name="Massage" placeholder="Your Massage" id="" ></textarea>
-                        <input type="submit" value="Send">    
+                        <textarea name="Massage"  placeholder="Your Massage" id="TextAreaUser" ></textarea>
+                        <input type="submit" value="Send" class="buttonsubjs" name="senmassgbut">    
                     </div>
 
                 </form>
@@ -448,7 +536,28 @@
         </div>
     </div>
     <!-- end contact us -->
-
+    <div class="footer">
+        <div class="container-css">
+            <div class="style-footer">
+                <span>Copy-Right  &copy;
+                    <?php 
+                        function GetCopyRight($year = "auto"){
+                            if($year === "auto"){
+                                echo date("Y") ;
+                            }else if ($year === intval(date("Y"))){
+                                echo $year;
+                            }else if ($year > intval(date("Y"))){
+                                echo $year . "     " . date("Y");
+                            }else if($year < intval(date("Y"))){ 
+                                echo date('Y') . "      " . $year;
+                            }
+                        }
+                        GetCopyRight(2024);
+                    ?>
+                </span>
+            </div>
+        </div>
+    </div>
     <!-- javascript -->
     <script src="js/try.js"></script>
 </body>

@@ -449,6 +449,31 @@
     left: 0px;
     top: 0;
 }
+/* start footer */
+.footer{
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+}
+.footer .container-css{
+    text-align: center;
+}
+.footer .container-css .style-footer{
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .container-css .style-footer span {
+
+}
+/* end footer */
+
 @media (max-width:575px) {
     .skills-sections{
         width: 100%;
@@ -688,7 +713,7 @@
         width: 100%;
     }
     .ourFeatuers .feats-box{
-        width: 103%;
+        width: 100%;
         margin: auto;
         grid-template-columns: repeat(1 , 1fr);
     }
@@ -850,7 +875,6 @@
     resize: none;
 }
 .contact .contactus-content .form-contact input[type="submit"]{
-    padding: 10px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid transparent;
@@ -871,18 +895,19 @@
         width: 100%;
     }
     .contact .contactus-content .form-contact {
-        width: 100%;
+        max-width: 100%;
+        width: 320px;
         margin: auto;
     }
     .contact .contactus-content .form-contact .left{
         float: none;
-        width: 400px;
+        width: 100%;
         margin: 3px auto;
     }
     .contact .contactus-content .form-contact .right{
         float: none;
         margin: 3px auto;
-        width: 400px;
+        width: 100%;
     }
 }
 /* end contact*/

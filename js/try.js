@@ -39,74 +39,59 @@ function OptinsColor(){
     });
     }
     OptinsColor();
-    /* end Color */
+/* end Color */
     
-/* start background */
-function OptionsBackGround(){
-let BackgroundOptions  = true;
-let BackLocalstorge = localStorage.getItem("Option-BackgroundImage");
-if(BackLocalstorge !== null){
-    console.log("Not Empty For BackGround");
-    if(BackLocalstorge === "true"){
-        BackgroundOptions = true;
-    }else{
-        BackgroundOptions = false;
+let BackOptionstf = true;
+let LocalBackGround = localStorage.getItem("Option-BackgroundImage");
+if(LocalBackGround !== null){
+    console.log("Not Empty BackGround");
+    if(LocalBackGround === "true"){
+        BackOptionstf = true;
+    }else {
+        BackOptionstf = false;    
     }
-    document.querySelectorAll(".option-yesnoback span").forEach(element => {
-        element.classList.remove("active");
+    document.querySelectorAll(".option-yesnoback span").forEach(Dis=>{
+        Dis.classList.remove("active");
     });
-    if(BackLocalstorge === "true" ){
+    if(LocalBackGround === "true" ){
         document.querySelector(".option-yesnoback .yes").classList.add("active");
     }else{
         document.querySelector(".option-yesnoback .no").classList.add("active");
     }
-}
-if(BackLocalstorge !== null ){
-    PlayBackGround();
-}
-let SetIntervalBack;
-let landingPage = document.querySelector(".landing");
-let ImageArray = ["team_work.jpg","R.jpg","R (1).jpg","istockphoto-180986465-170667a.jpg","desk-mac-apple-keyboard-desktop-lamp-work-space-brand-design-books-multimedia-screenshot-computers-desktop-computer-personal-computer-computer-monitor-personal-computer-hardware-display-device-royalty-free-imag.jpg"];
 
+}
+let SetIntrevalBackRand;
+let landing = document.querySelector(".landing");
 function PlayBackGround(){
-
-    if(BackgroundOptions === true){
-        SetIntervalBack = setInterval(() => {
-            let MathRandome = Math.floor(Math.random() * ImageArray.length);
-            landingPage.style.backgroundImage = "url('../image/"+ ImageArray[MathRandome] +"')"
+    let ImageAraay = ["../image/desk-mac-apple-keyboard-desktop-lamp-work-space-brand-design-books-multimedia-screenshot-computers-desktop-computer-personal-computer-computer-monitor-personal-computer-hardware-display-device-royalty-free-imag.jpg","../image/istockphoto-180986465-170667a.jpg","../image/R (1).jpg","../image/R.jpg","../image/team_work.jpg"];
+    if(BackOptionstf === true){
+        SetIntrevalBackRand = setInterval(() =>{
+            let RandMath = Math.floor(Math.random() * ImageAraay.length);
+            landing.style.backgroundImage = "url('image/"+ImageAraay[RandMath]+" ')";
         },1000);
     }
 }
-
-    if(BackLocalstorge !== null){
-        PlayBackGround();
-    }
-const YesNoBack = document.querySelectorAll(".option-yesnoback span");
-YesNoBack.forEach(Span => {
-    Span.addEventListener("click" , (e) => {
-        e.target.parentElement.querySelectorAll(".active").forEach(DisActive => {
-            DisActive.classList.remove("active");
+if(LocalBackGround !== null){
+    PlayBackGround();
+}
+const AllspanBack = document.querySelectorAll(".option-yesnoback span") ;
+AllspanBack.forEach(spanBack => {
+    spanBack.addEventListener("click" , (e) => {
+        e.target.parentElement.querySelectorAll(".active").forEach(Active => {
+            Active.classList.remove("active");
         });
         e.target.classList.add("active");
         if(e.target.dataset.backgroundoptionrand === "yes"){
-            console.log("Yes");
-            BackgroundOptions = true;
+            BackOptionstf = true;
             PlayBackGround();
             localStorage.setItem("Option-BackgroundImage" , true);
-        }else {
-            console.log("No");
-            BackgroundOptions = false;
-            clearInterval(SetIntervalBack);
+        }else{
+            BackOptionstf = false;
+            clearTimeout(SetIntrevalBackRand);
             localStorage.setItem("Option-BackgroundImage" , false);
         }
     });
 });
-
-}
-OptionsBackGround();
-/* end background */
-
-
 /* hide bullets */
 function OptionsHideBullets(){
 let HideBulletLocal = localStorage.getItem("Show-Hide-Bullet");
@@ -155,6 +140,7 @@ ResetOptions.addEventListener("click" , () => {
 
     window.location.reload();
 });
+
 /* end reset LocalStorge Options */
 
 /* start image popup */

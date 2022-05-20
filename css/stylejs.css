@@ -688,7 +688,7 @@
         width: 100%;
     }
     .ourFeatuers .feats-box{
-        width: 103%;
+        width: 100%;
         margin: auto;
         grid-template-columns: repeat(1 , 1fr);
     }

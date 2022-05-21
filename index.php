@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!-- commit -->
         <div class="information-text">
             <h1>We Are Creat Agency</h1>
             <p>Lorem ipsum dolor sit amet consectetur 
